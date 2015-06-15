@@ -1,0 +1,30 @@
+<h1>{{title}} by {{author.name}}</h1>
+
+<div class="body">
+  {{body}}
+</div>
+
+<hr>
+
+{{#if isEditing}}
+{{partial 'post/edit'}}
+<button class="btn btn-default" {{action 'doneEditing'}}>Done</button>
+{{else}}
+<button class="btn btn-default" {{action 'edit'}}>Edit</button>
+{{/if}}
+
+<button class="btn btn-default" {{action 'delete'}}>Delete</button>
+
+{{#link-to 'new-comment' classNames="btn btn-default"}}Add a comment{{/link-to}}
+
+{{outlet}}
+
+<hr>
+
+<h4>Comments:</h4>
+
+{{#each comment in comments}}
+<ul>
+  <li>{{comment.text}}</li>
+</ul>
+{{/each}}
